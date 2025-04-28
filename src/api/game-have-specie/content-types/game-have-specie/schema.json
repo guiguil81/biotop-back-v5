@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "game_have_species",
+  "info": {
+    "singularName": "game-have-specie",
+    "pluralName": "game-have-species",
+    "displayName": "GameHaveSpecie",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "qty": {
+      "type": "biginteger",
+      "required": true
+    },
+    "game": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::game.game",
+      "inversedBy": "gameHaveSpecies"
+    },
+    "specie": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::specie.specie",
+      "inversedBy": "gameHaveSpecies"
+    }
+  }
+}

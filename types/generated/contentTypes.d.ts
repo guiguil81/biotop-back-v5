@@ -369,6 +369,449 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiElementElement extends Struct.CollectionTypeSchema {
+  collectionName: 'elements';
+  info: {
+    displayName: 'Element';
+    pluralName: 'elements';
+    singularName: 'element';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::element.element'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiEonEon extends Struct.CollectionTypeSchema {
+  collectionName: 'eons';
+  info: {
+    description: '';
+    displayName: 'Eon';
+    pluralName: 'eons';
+    singularName: 'eon';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    eras: Schema.Attribute.Relation<'oneToMany', 'api::era.era'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::eon.eon'> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiEraSpecieConditionEraSpecieCondition
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'era_specie_conditions';
+  info: {
+    description: '';
+    displayName: 'EraSpecieCondition';
+    pluralName: 'era-specie-conditions';
+    singularName: 'era-specie-condition';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    era: Schema.Attribute.Relation<'manyToOne', 'api::era.era'>;
+    isGreaterThen: Schema.Attribute.Boolean & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::era-specie-condition.era-specie-condition'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    qtyNeeded: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    specie: Schema.Attribute.Relation<'manyToOne', 'api::specie.specie'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiEraEra extends Struct.CollectionTypeSchema {
+  collectionName: 'eras';
+  info: {
+    description: '';
+    displayName: 'Era';
+    pluralName: 'eras';
+    singularName: 'era';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    eon: Schema.Attribute.Relation<'manyToOne', 'api::eon.eon'>;
+    eraSpecieConditions: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::era-specie-condition.era-specie-condition'
+    >;
+    evByCycle: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    evMax: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    level: Schema.Attribute.Integer & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::era.era'> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    nextEra: Schema.Attribute.Relation<'oneToOne', 'api::era.era'>;
+    precedingEra: Schema.Attribute.Relation<'oneToOne', 'api::era.era'>;
+    publishedAt: Schema.Attribute.DateTime;
+    specieMaxScore: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    species: Schema.Attribute.Relation<'oneToMany', 'api::specie.specie'>;
+    speciesFoundScore: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiGameHaveSpecieGameHaveSpecie
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'game_have_species';
+  info: {
+    description: '';
+    displayName: 'GameHaveSpecie';
+    pluralName: 'game-have-species';
+    singularName: 'game-have-specie';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    game: Schema.Attribute.Relation<'manyToOne', 'api::game.game'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::game-have-specie.game-have-specie'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    qty: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    specie: Schema.Attribute.Relation<'manyToOne', 'api::specie.specie'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiGameGame extends Struct.CollectionTypeSchema {
+  collectionName: 'games';
+  info: {
+    description: '';
+    displayName: 'Game';
+    pluralName: 'games';
+    singularName: 'game';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    element: Schema.Attribute.Relation<'oneToOne', 'api::element.element'>;
+    era: Schema.Attribute.Relation<'oneToOne', 'api::era.era'>;
+    ev: Schema.Attribute.BigInteger & Schema.Attribute.DefaultTo<'100'>;
+    gameHaveSpecies: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::game-have-specie.game-have-specie'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::game.game'> &
+      Schema.Attribute.Private;
+    planetGround: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 100;
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    planetName: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    planetWatter: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 100;
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<100>;
+    publishedAt: Schema.Attribute.DateTime;
+    round: Schema.Attribute.Relation<'manyToOne', 'api::round.round'>;
+    score: Schema.Attribute.BigInteger & Schema.Attribute.DefaultTo<'0'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
+export interface ApiGroupSpecieGroupSpecie extends Struct.CollectionTypeSchema {
+  collectionName: 'group_species';
+  info: {
+    description: '';
+    displayName: 'GroupSpecie';
+    pluralName: 'group-species';
+    singularName: 'group-specie';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    groupSpeciesEat: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::group-specie.group-specie'
+    >;
+    groupSpeciesEatenBy: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::group-specie.group-specie'
+    >;
+    groupSpeciesProduce: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::group-specie.group-specie'
+    >;
+    groupSpeciesProduceByDead: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::group-specie.group-specie'
+    >;
+    groupSpeciesProducedBy: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::group-specie.group-specie'
+    >;
+    groupSpeciesProducedByDeadBy: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::group-specie.group-specie'
+    >;
+    groupSpeciesRequire: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::group-specie.group-specie'
+    >;
+    groupSpeciesRequiredBy: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::group-specie.group-specie'
+    >;
+    groupSpeciesUse: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::group-specie.group-specie'
+    >;
+    groupSpeciesUsedBy: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::group-specie.group-specie'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::group-specie.group-specie'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    species: Schema.Attribute.Relation<'oneToMany', 'api::specie.specie'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMaintenanceMaintenance extends Struct.SingleTypeSchema {
+  collectionName: 'maintenances';
+  info: {
+    displayName: 'Maintenance';
+    pluralName: 'maintenances';
+    singularName: 'maintenance';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    isOnMaintenance: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::maintenance.maintenance'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiRoundRound extends Struct.CollectionTypeSchema {
+  collectionName: 'rounds';
+  info: {
+    description: '';
+    displayName: 'Round';
+    pluralName: 'rounds';
+    singularName: 'round';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    end: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    games: Schema.Attribute.Relation<'oneToMany', 'api::game.game'>;
+    isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::round.round'> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSpecieSpecie extends Struct.CollectionTypeSchema {
+  collectionName: 'species';
+  info: {
+    description: '';
+    displayName: 'Specie';
+    pluralName: 'species';
+    singularName: 'specie';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    canBeModified: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    dead: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    defaultQty: Schema.Attribute.BigInteger & Schema.Attribute.DefaultTo<'0'>;
+    eat: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    element: Schema.Attribute.Relation<'oneToOne', 'api::element.element'>;
+    era: Schema.Attribute.Relation<'manyToOne', 'api::era.era'>;
+    eraSpecieConditions: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::era-specie-condition.era-specie-condition'
+    >;
+    gameHaveSpecies: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::game-have-specie.game-have-specie'
+    >;
+    groupSpecie: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::group-specie.group-specie'
+    >;
+    isPrimitive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::specie.specie'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    product: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    reproduction: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    speciesMutations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::species-mutation.species-mutation'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSpeciesMutationSpeciesMutation
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'species_mutations';
+  info: {
+    description: '';
+    displayName: 'SpeciesMutation';
+    pluralName: 'species-mutations';
+    singularName: 'species-mutation';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    coefficient: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::species-mutation.species-mutation'
+    > &
+      Schema.Attribute.Private;
+    needQty: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    specie: Schema.Attribute.Relation<'manyToOne', 'api::specie.specie'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -824,10 +1267,10 @@ export interface PluginUsersPermissionsUser
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    code: Schema.Attribute.Integer;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
@@ -838,6 +1281,8 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    games: Schema.Attribute.Relation<'oneToMany', 'api::game.game'>;
+    isInvited: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -878,6 +1323,17 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::element.element': ApiElementElement;
+      'api::eon.eon': ApiEonEon;
+      'api::era-specie-condition.era-specie-condition': ApiEraSpecieConditionEraSpecieCondition;
+      'api::era.era': ApiEraEra;
+      'api::game-have-specie.game-have-specie': ApiGameHaveSpecieGameHaveSpecie;
+      'api::game.game': ApiGameGame;
+      'api::group-specie.group-specie': ApiGroupSpecieGroupSpecie;
+      'api::maintenance.maintenance': ApiMaintenanceMaintenance;
+      'api::round.round': ApiRoundRound;
+      'api::specie.specie': ApiSpecieSpecie;
+      'api::species-mutation.species-mutation': ApiSpeciesMutationSpeciesMutation;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

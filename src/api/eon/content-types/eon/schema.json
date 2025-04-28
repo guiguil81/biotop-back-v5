@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "eons",
+  "info": {
+    "singularName": "eon",
+    "pluralName": "eons",
+    "displayName": "Eon",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "eras": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::era.era",
+      "mappedBy": "eon"
+    }
+  }
+}

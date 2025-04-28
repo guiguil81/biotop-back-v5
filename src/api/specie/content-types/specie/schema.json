@@ -1,0 +1,83 @@
+{
+  "kind": "collectionType",
+  "collectionName": "species",
+  "info": {
+    "singularName": "specie",
+    "pluralName": "species",
+    "displayName": "Specie",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "isPrimitive": {
+      "type": "boolean",
+      "default": false
+    },
+    "canBeModified": {
+      "type": "boolean",
+      "default": true
+    },
+    "defaultQty": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "reproduction": {
+      "type": "decimal",
+      "required": true
+    },
+    "eat": {
+      "type": "decimal",
+      "required": true
+    },
+    "product": {
+      "type": "decimal",
+      "required": true
+    },
+    "dead": {
+      "type": "decimal",
+      "required": true
+    },
+    "era": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::era.era",
+      "inversedBy": "species"
+    },
+    "groupSpecie": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::group-specie.group-specie",
+      "inversedBy": "species"
+    },
+    "gameHaveSpecies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::game-have-specie.game-have-specie",
+      "mappedBy": "specie"
+    },
+    "element": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::element.element"
+    },
+    "eraSpecieConditions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::era-specie-condition.era-specie-condition",
+      "mappedBy": "specie"
+    },
+    "speciesMutations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::species-mutation.species-mutation",
+      "mappedBy": "specie"
+    }
+  }
+}

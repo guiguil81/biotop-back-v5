@@ -1,0 +1,70 @@
+{
+  "kind": "collectionType",
+  "collectionName": "eras",
+  "info": {
+    "singularName": "era",
+    "pluralName": "eras",
+    "displayName": "Era",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "evByCycle": {
+      "type": "biginteger",
+      "required": true
+    },
+    "evMax": {
+      "type": "biginteger",
+      "required": true
+    },
+    "level": {
+      "type": "integer",
+      "required": true
+    },
+    "speciesFoundScore": {
+      "type": "biginteger",
+      "required": true
+    },
+    "specieMaxScore": {
+      "type": "biginteger",
+      "required": true
+    },
+    "eon": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::eon.eon",
+      "inversedBy": "eras"
+    },
+    "nextEra": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::era.era",
+      "inversedBy": "precedingEra"
+    },
+    "precedingEra": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::era.era",
+      "mappedBy": "nextEra"
+    },
+    "eraSpecieConditions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::era-specie-condition.era-specie-condition",
+      "mappedBy": "era"
+    },
+    "species": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::specie.specie",
+      "mappedBy": "era"
+    }
+  }
+}

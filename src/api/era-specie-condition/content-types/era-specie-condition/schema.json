@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "era_specie_conditions",
+  "info": {
+    "singularName": "era-specie-condition",
+    "pluralName": "era-specie-conditions",
+    "displayName": "EraSpecieCondition",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "qtyNeeded": {
+      "type": "biginteger",
+      "required": true
+    },
+    "isGreaterThen": {
+      "type": "boolean",
+      "required": true
+    },
+    "era": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::era.era",
+      "inversedBy": "eraSpecieConditions"
+    },
+    "specie": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::specie.specie",
+      "inversedBy": "eraSpecieConditions"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "species_mutations",
+  "info": {
+    "singularName": "species-mutation",
+    "pluralName": "species-mutations",
+    "displayName": "SpeciesMutation",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "needQty": {
+      "type": "biginteger",
+      "required": true
+    },
+    "coefficient": {
+      "type": "decimal",
+      "required": true
+    },
+    "specie": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::specie.specie",
+      "inversedBy": "speciesMutations"
+    }
+  }
+}

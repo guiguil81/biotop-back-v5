@@ -1,0 +1,86 @@
+{
+  "kind": "collectionType",
+  "collectionName": "group_species",
+  "info": {
+    "singularName": "group-specie",
+    "pluralName": "group-species",
+    "displayName": "GroupSpecie",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "groupSpeciesEat": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::group-specie.group-specie",
+      "inversedBy": "groupSpeciesEatenBy"
+    },
+    "groupSpeciesEatenBy": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::group-specie.group-specie",
+      "mappedBy": "groupSpeciesEat"
+    },
+    "groupSpeciesProduce": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::group-specie.group-specie",
+      "inversedBy": "groupSpeciesProducedBy"
+    },
+    "groupSpeciesProducedBy": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::group-specie.group-specie",
+      "mappedBy": "groupSpeciesProduce"
+    },
+    "groupSpeciesRequire": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::group-specie.group-specie",
+      "inversedBy": "groupSpeciesRequiredBy"
+    },
+    "groupSpeciesRequiredBy": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::group-specie.group-specie",
+      "mappedBy": "groupSpeciesRequire"
+    },
+    "groupSpeciesUse": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::group-specie.group-specie",
+      "inversedBy": "groupSpeciesUsedBy"
+    },
+    "groupSpeciesUsedBy": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::group-specie.group-specie",
+      "mappedBy": "groupSpeciesUse"
+    },
+    "groupSpeciesProduceByDead": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::group-specie.group-specie",
+      "inversedBy": "groupSpeciesProducedByDeadBy"
+    },
+    "groupSpeciesProducedByDeadBy": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::group-specie.group-specie",
+      "mappedBy": "groupSpeciesProduceByDead"
+    },
+    "species": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::specie.specie",
+      "mappedBy": "groupSpecie"
+    }
+  }
+}
