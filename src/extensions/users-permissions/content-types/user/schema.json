@@ -71,13 +71,6 @@
       "relation": "oneToMany",
       "target": "api::game.game",
       "mappedBy": "user"
-    },
-    "code": {
-      "type": "integer"
-    },
-    "isGuest": {
-      "type": "boolean",
-      "default": true
     }
   }
 }
