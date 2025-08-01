@@ -344,7 +344,7 @@ const gameProcess = async (game: Game) => {
   });
 
   speciesObject.forEach((specieRecord, specieId) => {
-    // console.log(`ID de l'espèce: ${specieId}`);
+    console.log(`ID de l'espèce: ${specieId}`);
     console.log(`Données de l'espèce:`, specieRecord.toJS()); // Convertit le Record en objet JavaScript pour l'affichage
   });
 };

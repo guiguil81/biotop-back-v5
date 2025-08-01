@@ -21,6 +21,7 @@ export default defineConfig([
       "prettier/prettier": "error",
       semi: ["error", "always"],
       "no-multi-spaces": "error",
+      "comma-dangle": ["error", "only-multiline"],
     },
   },
   tseslint.configs.recommended,
