@@ -9,114 +9,147 @@ const sanitizeUser = (user, ctx) => {
 };
 
 module.exports = (plugin) => {
-  const rawAuth = plugin.controllers.auth({ strapi });
+  // IMPORTANT v5 : plugin.controllers.auth est une factory ({ strapi }) => ({ ... })
+  const baseAuthFactory = plugin.controllers.auth;
 
-  const auth = ({ strapi }) => ({
-    ...rawAuth,
-    async register(ctx) {
-      const userService = strapi.plugin("users-permissions").service("user");
-      const jwtService = strapi.plugin("users-permissions").service("jwt");
-      const register = strapi.plugin("users-permissions").service("register");
+  plugin.controllers.auth = ({ strapi }) => {
+    const baseAuth = baseAuthFactory({ strapi });
 
-      const alwaysAllowedKeys = ["username", "password", "email"];
+    return {
+      ...baseAuth,
 
-      // Note that we intentionally do not filter allowedFields to allow a project to explicitly accept private or other Strapi field on registration
-      const allowedKeys = compact(
-        concat(
-          alwaysAllowedKeys,
-          isArray(register?.allowedFields) ? register.allowedFields : [],
-        ),
-      );
+      async register(ctx) {
+        // === 1) Settings & services
+        const upPluginStore = await strapi.store({
+          type: "plugin",
+          name: "users-permissions",
+        });
+        const advanced = await upPluginStore.get({ key: "advanced" }); // contient default_role, allow_register, email_confirmation, unique email, etc.
+        const userService = strapi.plugin("users-permissions").service("user");
+        const jwtService = strapi.plugin("users-permissions").service("jwt");
+        const registerCfg = strapi
+          .plugin("users-permissions")
+          .service("register"); // expose allowedFields en v5
 
-      const invalidKeys = Object.keys(ctx.request.body).filter(
-        (key) => !allowedKeys.includes(key),
-      );
+        // === 2) Inscriptions activées ?
+        if (!advanced?.allow_register) {
+          return ctx.badRequest("Register action is currently disabled.");
+        }
 
-      if (invalidKeys.length > 0) {
-        return ctx.badRequest(`Invalid parameters: ${invalidKeys.join(", ")}`);
-      }
+        // === 3) Whitelist des champs d'entrée
+        const alwaysAllowedKeys = ["username", "password", "email"];
+        // En v5, si allowedFields est défini, seuls ces champs additionnels sont acceptés ; sinon on accepte tout (mais on reste strict ici).
+        const allowedKeys = compact(
+          concat(
+            alwaysAllowedKeys,
+            isArray(registerCfg?.allowedFields)
+              ? registerCfg.allowedFields
+              : [],
+          ),
+        );
 
-      const {
-        email,
-        password,
-        username,
-        provider = "local",
-        ...rest
-      } = ctx.request.body;
+        const body = ctx.request.body || {};
+        const invalidKeys = Object.keys(body).filter(
+          (k) => !allowedKeys.includes(k),
+        );
+        if (invalidKeys.length > 0) {
+          return ctx.badRequest(
+            `Invalid parameters: ${invalidKeys.join(", ")}`,
+          );
+        }
 
-      const identifierFilter = {
-        $or: [
-          { email: email.toLowerCase() },
-          { username: email.toLowerCase() },
-          { username },
-          { email: username },
-        ],
-      };
+        const {
+          email,
+          password,
+          username: rawUsername,
+          // tous les champs additionnels explicitement whitelistes
+          ...restUnsafe
+        } = body;
 
-      const pluginStore = await strapi.store({
-        type: "plugin",
-        name: "users-permissions",
-      });
+        // Minimal validations (le core fait aussi des vérifs ; on garde le strict nécessaire côté contrôleur)
+        if (!email || !password) {
+          return ctx.badRequest("Missing email or password.");
+        }
 
-      const settings = await pluginStore.get({ key: "advanced" });
+        const emailL = String(email).toLowerCase();
+        const usernameL = rawUsername
+          ? String(rawUsername).toLowerCase()
+          : emailL;
+        const provider = "local";
 
-      const role = await strapi.db
-        .query("plugin::users-permissions.role")
-        .findOne({ where: { type: settings.default_role } });
+        // Ne conserve dans rest que les clés whitelistees
+        const rest = Object.fromEntries(
+          Object.entries(restUnsafe).filter(([k]) => allowedKeys.includes(k)),
+        );
 
-      if (!role) {
-        return ctx.badRequest("Impossible to find the default role");
-      }
+        // === 4) Rôle par défaut
+        const defaultRole = await strapi.db
+          .query("plugin::users-permissions.role")
+          .findOne({ where: { type: advanced.default_role } });
 
-      const conflictingUserCount = await strapi.db
-        .query("plugin::users-permissions.user")
-        .count({
-          where: { ...identifierFilter, provider },
+        if (!defaultRole) {
+          return ctx.badRequest("Impossible to find the default role");
+        }
+
+        // === 5) Unicité / Conflits
+        // Conflit côté provider "local" sur email OU username
+        const providerConflict = await strapi.db
+          .query("plugin::users-permissions.user")
+          .count({
+            where: {
+              provider,
+              $or: [{ email: emailL }, { username: usernameL }],
+            },
+          });
+
+        if (providerConflict > 0) {
+          return ctx.badRequest("Email or Username are already taken");
+        }
+
+        // Si "One account per email address" est activé (v5)
+        // (clé côté UI : "One account per email address")
+        if (advanced?.unique_email) {
+          const emailTaken = await strapi.db
+            .query("plugin::users-permissions.user")
+            .count({ where: { email: emailL } });
+
+          if (emailTaken > 0) {
+            return ctx.badRequest("Email is already taken");
+          }
+        }
+
+        // === 6) Création user (on force confirmed:false comme tu veux)
+        // NB: Le core met confirmed=!advanced.email_confirmation ; toi tu veux 100% false.
+        const user = await userService.add({
+          ...rest,
+          role: defaultRole.id,
+          email: emailL,
+          username: usernameL,
+          password,
+          provider,
+          confirmed: false, // <- ta différence
         });
 
-      if (conflictingUserCount > 0) {
-        return ctx.badRequest("Email or Username are already taken");
-      }
+        // === 7) Post-actions métier (création game & species, etc.)
+        // Exemple :
+        // await strapi.entityService.create("api::game.game", {
+        //   data: { user: user.id, /* ... */ },
+        // });
+        // await strapi.entityService.create("api::species.species", {
+        //   data: { owner: user.id, /* ... */ },
+        // });
 
-      const conflictingUserEmail = await strapi.db
-        .query("plugin::users-permissions.user")
-        .count({
-          where: { ...identifierFilter },
-        });
+        // === 8) JWT + sanitization + réponse
+        const jwt = jwtService.issue({ id: user.id });
+        const sanitizedUser = await sanitizeUser(user, ctx);
 
-      if (conflictingUserEmail > 0) {
-        return ctx.badRequest("Email or Username are already taken");
-      }
+        ctx.body = {
+          jwt,
+          user: sanitizedUser,
+        };
+      },
+    };
+  };
 
-      const user = await userService.add({
-        ...rest,
-        role: role.id,
-        email: email.toLowerCase(),
-        username,
-        confirmed: !settings.email_confirmation,
-        password,
-        provider,
-        ...rest,
-      });
-
-      const userUpdate = await strapi.entityService.update(
-        "plugin::users-permissions.user",
-        user.id,
-        { data: { confirmed: false } },
-      );
-
-      const jwt = jwtService.issue({ id: userUpdate.id });
-      const sanitizedUser = await sanitizeUser(userUpdate, ctx);
-
-      // need creation game & species
-
-      ctx.body = {
-        jwt,
-        user: sanitizedUser,
-      };
-    },
-  });
-
-  plugin.controllers.auth = auth;
   return plugin;
 };

@@ -11,8 +11,17 @@ export default {
     },
     {
       method: "POST",
-      path: "/updateConfirmedEmail",
-      handler: "custom-user-flow.updateConfirmedEmail",
+      path: "/sendEmailChangeCode",
+      handler: "custom-user-flow.sendEmailChangeCode",
+      config: {
+        policies: ["global::is-authenticated"],
+        middlewares: [],
+      },
+    },
+    {
+      method: "POST",
+      path: "/confirmEmailChange",
+      handler: "custom-user-flow.confirmEmailChange",
       config: {
         policies: ["global::is-authenticated"],
         middlewares: [],

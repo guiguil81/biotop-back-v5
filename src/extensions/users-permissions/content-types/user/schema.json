@@ -71,6 +71,14 @@
       "relation": "oneToMany",
       "target": "api::game.game",
       "mappedBy": "user"
-    }
+    },
+    "emailChangeOtp": { "type": "string" },
+    "emailChangeOtpExpires": { "type": "datetime" },
+    "emailChangeOtpAttempts": { "type": "integer", "default": 0 },
+    "emailChangeRateLimitUntil": { "type": "datetime" },
+    "emailChangeBackoffStep": { "type": "integer", "default": 0 },
+    "emailChangeBackoffResetAt": { "type": "datetime" },
+    "emailChangeDailyCount": { "type": "integer", "default": 0 },
+    "emailChangeDailyCountResetAt": { "type": "datetime" }
   }
 }

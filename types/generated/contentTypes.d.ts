@@ -1284,6 +1284,17 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    emailChangeBackoffResetAt: Schema.Attribute.DateTime;
+    emailChangeBackoffStep: Schema.Attribute.Integer &
+      Schema.Attribute.DefaultTo<0>;
+    emailChangeDailyCount: Schema.Attribute.Integer &
+      Schema.Attribute.DefaultTo<0>;
+    emailChangeDailyCountResetAt: Schema.Attribute.DateTime;
+    emailChangeOtp: Schema.Attribute.String;
+    emailChangeOtpAttempts: Schema.Attribute.Integer &
+      Schema.Attribute.DefaultTo<0>;
+    emailChangeOtpExpires: Schema.Attribute.DateTime;
+    emailChangeRateLimitUntil: Schema.Attribute.DateTime;
     games: Schema.Attribute.Relation<"oneToMany", "api::game.game">;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
