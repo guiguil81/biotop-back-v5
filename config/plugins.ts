@@ -7,7 +7,7 @@ module.exports = ({ env }) => ({
       },
       settings: {
         defaultFrom: env("SENDGRID_EMAIL"),
-        defaultReplyTo: env("SENDGRID_EMAIL"),
+        defaultReplyTo: env("SENDGRID_EMAIL_REPLY"),
       },
     },
   },
