@@ -615,7 +615,6 @@ export interface ApiGameGame extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     element: Schema.Attribute.Relation<"oneToOne", "api::element.element">;
     era: Schema.Attribute.Relation<"oneToOne", "api::era.era">;
-    ev: Schema.Attribute.BigInteger & Schema.Attribute.DefaultTo<"100">;
     gameHaveCurrency: Schema.Attribute.Relation<
       "oneToOne",
       "api::game-have-currency.game-have-currency"

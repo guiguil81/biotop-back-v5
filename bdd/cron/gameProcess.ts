@@ -16,7 +16,8 @@ import { GameHaveSpecie, GameHaveSpecieWithDetails } from "../types/specie";
 const gameProcess = async (game: Game) => {
   let speciesObject: Map<string, Record<SpecieEvolution>> = Map();
   const gameElementId = game.element.id;
-  const ev = fixNumber(game.ev);
+  // const ev = fixNumber(game.ev);
+  const ev = fixNumber(10);
   const evByCycle = fixNumber(game.era.evByCycle);
   const evMax = fixNumber(game.era.evMax);
 

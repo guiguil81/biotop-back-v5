@@ -132,12 +132,6 @@ module.exports = (plugin) => {
 
         // === 7) Post-actions métier (création game & species, etc.)
         // Exemple :
-        // await strapi.entityService.create("api::game.game", {
-        //   data: { user: user.id, /* ... */ },
-        // });
-        // await strapi.entityService.create("api::species.species", {
-        //   data: { owner: user.id, /* ... */ },
-        // });
 
         // === 8) JWT + sanitization + réponse
         const jwt = jwtService.issue({ id: user.id });

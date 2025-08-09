@@ -17,10 +17,6 @@
       "required": true,
       "unique": true
     },
-    "ev": {
-      "type": "biginteger",
-      "default": "100"
-    },
     "score": {
       "type": "biginteger",
       "default": "0"

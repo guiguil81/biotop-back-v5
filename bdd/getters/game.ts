@@ -8,7 +8,7 @@ const getCurrentGames: (
   }
 
   const data: Game[] = await strapi.documents("api::game.game").findMany({
-    fields: ["id", "ev"],
+    fields: ["id"],
     filters: {
       $and: [
         {
