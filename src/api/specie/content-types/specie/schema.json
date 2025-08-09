@@ -10,6 +10,7 @@
   "options": {
     "draftAndPublish": false
   },
+  "pluginOptions": {},
   "attributes": {
     "name": {
       "type": "string",
@@ -78,6 +79,21 @@
       "relation": "oneToMany",
       "target": "api::species-mutation.species-mutation",
       "mappedBy": "specie"
+    },
+    "sciName": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "bioCategory": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "bacteria",
+        "archaea",
+        "eukarya",
+        "abiotic"
+      ]
     }
   }
 }

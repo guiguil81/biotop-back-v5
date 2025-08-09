@@ -1,0 +1,1542 @@
+{
+  "elements": [
+    {
+      "id": 1,
+      "name": "Shallow Marine Platform"
+    },
+    {
+      "id": 2,
+      "name": "Hydrothermal Vents"
+    },
+    {
+      "id": 3,
+      "name": "Deep Anoxic Basin"
+    },
+    {
+      "id": 4,
+      "name": "Stromatolite Lagoons"
+    },
+    {
+      "id": 5,
+      "name": "Glaciated Sea"
+    },
+    {
+      "id": 6,
+      "name": "Oxic Continental Shelf"
+    }
+  ],
+  "eras": [
+    {
+      "id": 1,
+      "name": "Eoarchean",
+      "level": 1,
+      "evByCycle": 1.0,
+      "evMax": 120.0,
+      "speciesFoundScore": 2.0,
+      "specieMaxScore": 1000000.0,
+      "eon": 1
+    },
+    {
+      "id": 2,
+      "name": "Paleoarchean",
+      "level": 2,
+      "evByCycle": 1.0,
+      "evMax": 220.0,
+      "speciesFoundScore": 2.0,
+      "specieMaxScore": 1000000.0,
+      "eon": 1
+    },
+    {
+      "id": 3,
+      "name": "Mesoarchean",
+      "level": 3,
+      "evByCycle": 1.5,
+      "evMax": 320.0,
+      "speciesFoundScore": 2.0,
+      "specieMaxScore": 1000000.0,
+      "eon": 1
+    },
+    {
+      "id": 4,
+      "name": "Neoarchean",
+      "level": 4,
+      "evByCycle": 2.0,
+      "evMax": 420.0,
+      "speciesFoundScore": 3.0,
+      "specieMaxScore": 1000000.0,
+      "eon": 1
+    },
+    {
+      "id": 5,
+      "name": "Paleoproterozoic",
+      "level": 5,
+      "evByCycle": 2.0,
+      "evMax": 620.0,
+      "speciesFoundScore": 3.0,
+      "specieMaxScore": 1000000.0,
+      "eon": 2
+    },
+    {
+      "id": 6,
+      "name": "Mesoproterozoic",
+      "level": 6,
+      "evByCycle": 2.5,
+      "evMax": 820.0,
+      "speciesFoundScore": 3.0,
+      "specieMaxScore": 1000000.0,
+      "eon": 2
+    },
+    {
+      "id": 7,
+      "name": "Neoproterozoic",
+      "level": 7,
+      "evByCycle": 3.0,
+      "evMax": 1020.0,
+      "speciesFoundScore": 3.0,
+      "specieMaxScore": 1000000.0,
+      "eon": 2
+    }
+  ],
+  "groupSpecies": [
+    {
+      "id": 1,
+      "name": "Primordial anaerobes",
+      "sciName": "Primordial anaerobes (LUCA-like)",
+      "isPrimitive": true,
+      "require": [],
+      "eat": [],
+      "use": [],
+      "produce": [],
+      "produceByDead": [
+        27
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Chemolithoautotrophs",
+      "sciName": "Chemolithoautotrophs (H2/Fe/S)",
+      "isPrimitive": true,
+      "require": [],
+      "eat": [
+        21,
+        23,
+        26,
+        30
+      ],
+      "use": [],
+      "produce": [
+        27
+      ],
+      "produceByDead": []
+    },
+    {
+      "id": 3,
+      "name": "Methanogens",
+      "sciName": "Methanogens",
+      "isPrimitive": true,
+      "require": [],
+      "eat": [],
+      "use": [
+        21,
+        30
+      ],
+      "produce": [
+        25
+      ],
+      "produceByDead": []
+    },
+    {
+      "id": 4,
+      "name": "Methanotrophs",
+      "sciName": "Methanotrophs",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [
+        25
+      ],
+      "use": [
+        22
+      ],
+      "produce": [
+        21
+      ],
+      "produceByDead": []
+    },
+    {
+      "id": 5,
+      "name": "Sulfate-reducing bacteria",
+      "sciName": "Sulfate-reducing bacteria",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [
+        27
+      ],
+      "use": [],
+      "produce": [
+        26,
+        21
+      ],
+      "produceByDead": []
+    },
+    {
+      "id": 6,
+      "name": "Sulfur-oxidizing bacteria (anoxygenic)",
+      "sciName": "Sulfur-oxidizing bacteria (anoxygenic)",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [
+        26,
+        21
+      ],
+      "use": [],
+      "produce": [
+        27
+      ],
+      "produceByDead": []
+    },
+    {
+      "id": 7,
+      "name": "Iron-oxidizing bacteria",
+      "sciName": "Iron-oxidizing bacteria",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [
+        23
+      ],
+      "use": [],
+      "produce": [
+        24
+      ],
+      "produceByDead": []
+    },
+    {
+      "id": 8,
+      "name": "Heterotrophic anaerobes (fermenters)",
+      "sciName": "Heterotrophic anaerobes (fermenters)",
+      "isPrimitive": true,
+      "require": [],
+      "eat": [
+        27,
+        28
+      ],
+      "use": [],
+      "produce": [
+        27,
+        21
+      ],
+      "produceByDead": [
+        27
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Cyanobacteria (oxygenic)",
+      "sciName": "Cyanobacteria (oxygenic)",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [
+        21
+      ],
+      "use": [],
+      "produce": [
+        22
+      ],
+      "produceByDead": [
+        27,
+        28
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Stromatolite builders (cyanobacteria mats)",
+      "sciName": "Stromatolite builders (cyanobacteria mats)",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [
+        21
+      ],
+      "use": [],
+      "produce": [
+        22
+      ],
+      "produceByDead": [
+        27,
+        28
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Aerobic bacteria",
+      "sciName": "Aerobic bacteria",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [
+        27
+      ],
+      "use": [
+        22
+      ],
+      "produce": [
+        21
+      ],
+      "produceByDead": [
+        27
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Eukaryotic protists (acritarchs)",
+      "sciName": "Eukaryotic protists (acritarchs)",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [
+        21
+      ],
+      "use": [],
+      "produce": [
+        22
+      ],
+      "produceByDead": [
+        27,
+        28
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Red and green algae",
+      "sciName": "Red & green algae",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [
+        21
+      ],
+      "use": [],
+      "produce": [
+        22
+      ],
+      "produceByDead": [
+        27,
+        28
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Grypania spiralis",
+      "sciName": "Grypania spiralis",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [
+        21
+      ],
+      "use": [],
+      "produce": [
+        22
+      ],
+      "produceByDead": [
+        27
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Heterotrophic eukaryotes (protozoa)",
+      "sciName": "Heterotrophic eukaryotes (protozoa)",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [
+        9,
+        12,
+        13
+      ],
+      "use": [],
+      "produce": [
+        21
+      ],
+      "produceByDead": [
+        27
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Porifera (sponge-grade)",
+      "sciName": "Porifera (sponge-grade)",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [
+        12,
+        27
+      ],
+      "use": [],
+      "produce": [
+        21
+      ],
+      "produceByDead": [
+        27
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Cnidarian-grade (medusoids/fronds)",
+      "sciName": "Cnidarian-grade (medusoids/fronds)",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [
+        12,
+        13,
+        15
+      ],
+      "use": [],
+      "produce": [
+        21
+      ],
+      "produceByDead": [
+        27
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Ediacaran mat grazers (Dickinsonia)",
+      "sciName": "Ediacaran mat grazers (Dickinsonia)",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [
+        10
+      ],
+      "use": [],
+      "produce": [
+        21
+      ],
+      "produceByDead": [
+        27
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Ediacaran fronds (Charnia)",
+      "sciName": "Ediacaran fronds (Charnia)",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [],
+      "use": [],
+      "produce": [
+        21
+      ],
+      "produceByDead": [
+        27
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Ediacaran tubular/skeletal (Cloudina/Namacalathus)",
+      "sciName": "Ediacaran tubular/skeletal (Cloudina/Namacalathus)",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [
+        12,
+        27
+      ],
+      "use": [],
+      "produce": [
+        21
+      ],
+      "produceByDead": [
+        27
+      ]
+    },
+    {
+      "id": 21,
+      "name": "CO2 (pool)",
+      "sciName": "Resource: CO2",
+      "isPrimitive": true,
+      "require": [],
+      "eat": [],
+      "use": [],
+      "produce": [],
+      "produceByDead": []
+    },
+    {
+      "id": 22,
+      "name": "O2 (pool)",
+      "sciName": "Resource: O2",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [],
+      "use": [],
+      "produce": [],
+      "produceByDead": []
+    },
+    {
+      "id": 23,
+      "name": "Fe2+ dissolved (pool)",
+      "sciName": "Resource: Fe2+ dissolved",
+      "isPrimitive": true,
+      "require": [],
+      "eat": [],
+      "use": [],
+      "produce": [],
+      "produceByDead": []
+    },
+    {
+      "id": 24,
+      "name": "Fe3+ precipitates (sink)",
+      "sciName": "Resource: Fe3+ precipitates",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [],
+      "use": [],
+      "produce": [],
+      "produceByDead": []
+    },
+    {
+      "id": 25,
+      "name": "CH4 (pool)",
+      "sciName": "Resource: CH4",
+      "isPrimitive": true,
+      "require": [],
+      "eat": [],
+      "use": [],
+      "produce": [],
+      "produceByDead": []
+    },
+    {
+      "id": 26,
+      "name": "H2S dissolved (pool)",
+      "sciName": "Resource: H2S dissolved",
+      "isPrimitive": true,
+      "require": [],
+      "eat": [],
+      "use": [],
+      "produce": [],
+      "produceByDead": []
+    },
+    {
+      "id": 27,
+      "name": "DOC (pool)",
+      "sciName": "Resource: dissolved organic carbon",
+      "isPrimitive": true,
+      "require": [],
+      "eat": [],
+      "use": [],
+      "produce": [],
+      "produceByDead": []
+    },
+    {
+      "id": 28,
+      "name": "POC (pool)",
+      "sciName": "Resource: particulate organic carbon",
+      "isPrimitive": true,
+      "require": [],
+      "eat": [],
+      "use": [],
+      "produce": [],
+      "produceByDead": []
+    },
+    {
+      "id": 29,
+      "name": "Nutrients (pool)",
+      "sciName": "Resource: N/P",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [],
+      "use": [],
+      "produce": [],
+      "produceByDead": []
+    },
+    {
+      "id": 30,
+      "name": "H2 dissolved (pool)",
+      "sciName": "Resource: H2 dissolved",
+      "isPrimitive": true,
+      "require": [],
+      "eat": [],
+      "use": [],
+      "produce": [],
+      "produceByDead": []
+    },
+    {
+      "id": 31,
+      "name": "Hydrothermal flux",
+      "sciName": "Geoflux: hydrothermal vents",
+      "isPrimitive": true,
+      "require": [],
+      "eat": [],
+      "use": [],
+      "produce": [
+        21,
+        23,
+        26,
+        30
+      ],
+      "produceByDead": []
+    },
+    {
+      "id": 32,
+      "name": "Ammonia oxidizers",
+      "sciName": "Ammonia oxidizers (Nitrosomonas-like)",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [],
+      "use": [
+        22
+      ],
+      "produce": [
+        29
+      ],
+      "produceByDead": []
+    },
+    {
+      "id": 33,
+      "name": "Denitrifiers",
+      "sciName": "Facultative denitrifiers (Pseudomonas-like)",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [
+        27
+      ],
+      "use": [],
+      "produce": [
+        29
+      ],
+      "produceByDead": []
+    },
+    {
+      "id": 34,
+      "name": "Ediacaran bilaterian-grade",
+      "sciName": "Ediacaran bilaterian-grade (Kimberella/Spriggina)",
+      "isPrimitive": false,
+      "require": [
+        22
+      ],
+      "eat": [
+        10,
+        12,
+        13
+      ],
+      "use": [],
+      "produce": [
+        27
+      ],
+      "produceByDead": []
+    },
+    {
+      "id": 35,
+      "name": "Ediacaran sessile quilted",
+      "sciName": "Ediacaran sessile quilted (Ernietta)",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [
+        27
+      ],
+      "use": [],
+      "produce": [
+        27
+      ],
+      "produceByDead": []
+    },
+    {
+      "id": 36,
+      "name": "Ediacaran trilobozoa",
+      "sciName": "Ediacaran trilobozoa (Tribrachidium)",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [
+        12,
+        27
+      ],
+      "use": [],
+      "produce": [
+        27
+      ],
+      "produceByDead": []
+    },
+    {
+      "id": 37,
+      "name": "Ediacaran rangeomorphs",
+      "sciName": "Ediacaran rangeomorphs (Rangea/Fractofusus)",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [],
+      "use": [],
+      "produce": [
+        27
+      ],
+      "produceByDead": []
+    },
+    {
+      "id": 38,
+      "name": "Testate amoebae",
+      "sciName": "Testate amoebae (Arcella-like)",
+      "isPrimitive": false,
+      "require": [],
+      "eat": [
+        12,
+        27
+      ],
+      "use": [],
+      "produce": [
+        27
+      ],
+      "produceByDead": []
+    }
+  ],
+  "species": [
+    {
+      "id": 1,
+      "name": "Hydrothermal emissions",
+      "sciName": "Hydrothermal flux",
+      "reproduction": 0.0,
+      "eat": 0.0,
+      "product": 0.5,
+      "dead": 0.0,
+      "element": 2,
+      "era": 1,
+      "groupSpecie": 31
+    },
+    {
+      "id": 2,
+      "name": "CO2 (air)",
+      "sciName": "CO2 atmosphere",
+      "reproduction": 0.0,
+      "eat": 0.0,
+      "product": 0.0,
+      "dead": 0.0,
+      "element": 1,
+      "era": 1,
+      "groupSpecie": 21
+    },
+    {
+      "id": 3,
+      "name": "CO2 (ocean)",
+      "sciName": "CO2 dissolved",
+      "reproduction": 0.0,
+      "eat": 0.0,
+      "product": 0.0,
+      "dead": 0.0,
+      "element": 1,
+      "era": 1,
+      "groupSpecie": 21
+    },
+    {
+      "id": 4,
+      "name": "O2 (air)",
+      "sciName": "O2 atmosphere",
+      "reproduction": 0.0,
+      "eat": 0.0,
+      "product": 0.0,
+      "dead": 0.0,
+      "element": 1,
+      "era": 1,
+      "groupSpecie": 22
+    },
+    {
+      "id": 5,
+      "name": "O2 (ocean)",
+      "sciName": "O2 dissolved",
+      "reproduction": 0.0,
+      "eat": 0.0,
+      "product": 0.0,
+      "dead": 0.0,
+      "element": 6,
+      "era": 1,
+      "groupSpecie": 22
+    },
+    {
+      "id": 6,
+      "name": "Fe2+ (aq)",
+      "sciName": "Fe2+ dissolved",
+      "reproduction": 0.0,
+      "eat": 0.0,
+      "product": 0.0,
+      "dead": 0.0,
+      "element": 3,
+      "era": 1,
+      "groupSpecie": 23
+    },
+    {
+      "id": 7,
+      "name": "Fe3+ (solid)",
+      "sciName": "Fe3+ precipitates (BIF)",
+      "reproduction": 0.0,
+      "eat": 0.0,
+      "product": 0.0,
+      "dead": 0.0,
+      "element": 3,
+      "era": 1,
+      "groupSpecie": 24
+    },
+    {
+      "id": 8,
+      "name": "CH4 (pool)",
+      "sciName": "Methane",
+      "reproduction": 0.0,
+      "eat": 0.0,
+      "product": 0.0,
+      "dead": 0.0,
+      "element": 1,
+      "era": 1,
+      "groupSpecie": 25
+    },
+    {
+      "id": 9,
+      "name": "H2S (aq)",
+      "sciName": "Hydrogen sulfide",
+      "reproduction": 0.0,
+      "eat": 0.0,
+      "product": 0.0,
+      "dead": 0.0,
+      "element": 3,
+      "era": 1,
+      "groupSpecie": 26
+    },
+    {
+      "id": 10,
+      "name": "DOC",
+      "sciName": "Dissolved organic carbon",
+      "reproduction": 0.0,
+      "eat": 0.0,
+      "product": 0.0,
+      "dead": 0.0,
+      "element": 1,
+      "era": 1,
+      "groupSpecie": 27
+    },
+    {
+      "id": 11,
+      "name": "POC",
+      "sciName": "Particulate organic carbon",
+      "reproduction": 0.0,
+      "eat": 0.0,
+      "product": 0.0,
+      "dead": 0.0,
+      "element": 1,
+      "era": 1,
+      "groupSpecie": 28
+    },
+    {
+      "id": 12,
+      "name": "Nutrients",
+      "sciName": "N/P nutrients",
+      "reproduction": 0.0,
+      "eat": 0.0,
+      "product": 0.0,
+      "dead": 0.0,
+      "element": 1,
+      "era": 1,
+      "groupSpecie": 29
+    },
+    {
+      "id": 13,
+      "name": "H2 (aq)",
+      "sciName": "Hydrogen dissolved",
+      "reproduction": 0.0,
+      "eat": 0.0,
+      "product": 0.0,
+      "dead": 0.0,
+      "element": 2,
+      "era": 1,
+      "groupSpecie": 30
+    },
+    {
+      "id": 14,
+      "name": "LUCA-like anaerobes",
+      "sciName": "Primordial anaerobes (LUCA-like)",
+      "reproduction": 0.1,
+      "eat": 0.02,
+      "product": 0.0,
+      "dead": 0.03,
+      "element": 1,
+      "era": 1,
+      "groupSpecie": 1
+    },
+    {
+      "id": 15,
+      "name": "Chemolithoautotrophs (vents)",
+      "sciName": "Chemolithoautotrophs (H2/Fe/S)",
+      "reproduction": 0.15,
+      "eat": 0.01,
+      "product": 0.02,
+      "dead": 0.03,
+      "element": 2,
+      "era": 1,
+      "groupSpecie": 2
+    },
+    {
+      "id": 16,
+      "name": "Iron-oxidizing bacteria (vents)",
+      "sciName": "Iron-oxidizing vent bacteria",
+      "reproduction": 0.12,
+      "eat": 0.01,
+      "product": 0.02,
+      "dead": 0.03,
+      "element": 2,
+      "era": 2,
+      "groupSpecie": 7
+    },
+    {
+      "id": 17,
+      "name": "Methanogens",
+      "sciName": "Methanogens",
+      "reproduction": 0.14,
+      "eat": 0.0,
+      "product": 0.03,
+      "dead": 0.03,
+      "element": 3,
+      "era": 2,
+      "groupSpecie": 3
+    },
+    {
+      "id": 18,
+      "name": "Purple sulfur bacteria",
+      "sciName": "Purple sulfur bacteria",
+      "reproduction": 0.12,
+      "eat": 0.01,
+      "product": 0.01,
+      "dead": 0.03,
+      "element": 4,
+      "era": 2,
+      "groupSpecie": 6
+    },
+    {
+      "id": 19,
+      "name": "Sulfate-reducing bacteria",
+      "sciName": "Sulfate-reducing bacteria",
+      "reproduction": 0.1,
+      "eat": 0.02,
+      "product": 0.01,
+      "dead": 0.03,
+      "element": 3,
+      "era": 2,
+      "groupSpecie": 5
+    },
+    {
+      "id": 20,
+      "name": "Heterotrophic anaerobes (fermenters)",
+      "sciName": "Heterotrophic anaerobes (fermenters)",
+      "reproduction": 0.11,
+      "eat": 0.03,
+      "product": 0.0,
+      "dead": 0.03,
+      "element": 3,
+      "era": 2,
+      "groupSpecie": 8
+    },
+    {
+      "id": 21,
+      "name": "Green sulfur bacteria",
+      "sciName": "Green sulfur bacteria",
+      "reproduction": 0.12,
+      "eat": 0.01,
+      "product": 0.01,
+      "dead": 0.03,
+      "element": 4,
+      "era": 3,
+      "groupSpecie": 6
+    },
+    {
+      "id": 22,
+      "name": "Cyanobacteria (oxygenic)",
+      "sciName": "Cyanobacteria (oxygenic)",
+      "reproduction": 0.16,
+      "eat": 0.01,
+      "product": 0.04,
+      "dead": 0.03,
+      "element": 1,
+      "era": 3,
+      "groupSpecie": 9,
+      "mutations": [
+        {
+          "needQty": "1000000",
+          "coefficient": 1.15
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Stromatolite builders",
+      "sciName": "Stromatolite builders",
+      "reproduction": 0.18,
+      "eat": 0.01,
+      "product": 0.05,
+      "dead": 0.03,
+      "element": 4,
+      "era": 3,
+      "groupSpecie": 10,
+      "mutations": [
+        {
+          "needQty": "1000000",
+          "coefficient": 1.1
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "name": "Iron-oxidizing bacteria",
+      "sciName": "Iron-oxidizing bacteria",
+      "reproduction": 0.1,
+      "eat": 0.01,
+      "product": 0.01,
+      "dead": 0.03,
+      "element": 3,
+      "era": 3,
+      "groupSpecie": 7
+    },
+    {
+      "id": 25,
+      "name": "Aerobic bacteria",
+      "sciName": "Aerobic bacteria",
+      "reproduction": 0.14,
+      "eat": 0.02,
+      "product": 0.0,
+      "dead": 0.03,
+      "element": 6,
+      "era": 5,
+      "groupSpecie": 11
+    },
+    {
+      "id": 26,
+      "name": "Acritarchs",
+      "sciName": "Eukaryotic protists (acritarchs)",
+      "reproduction": 0.08,
+      "eat": 0.01,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 1,
+      "era": 5,
+      "groupSpecie": 12
+    },
+    {
+      "id": 27,
+      "name": "Grypania spiralis",
+      "sciName": "Grypania spiralis",
+      "reproduction": 0.05,
+      "eat": 0.01,
+      "product": 0.02,
+      "dead": 0.02,
+      "element": 1,
+      "era": 5,
+      "groupSpecie": 14
+    },
+    {
+      "id": 28,
+      "name": "Heterotrophic eukaryotes (protozoa)",
+      "sciName": "Heterotrophic eukaryotes (protozoa)",
+      "reproduction": 0.06,
+      "eat": 0.02,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 1,
+      "era": 5,
+      "groupSpecie": 15
+    },
+    {
+      "id": 29,
+      "name": "Bangiomorpha pubescens",
+      "sciName": "Bangiomorpha pubescens",
+      "reproduction": 0.06,
+      "eat": 0.01,
+      "product": 0.03,
+      "dead": 0.02,
+      "element": 1,
+      "era": 6,
+      "groupSpecie": 13,
+      "mutations": [
+        {
+          "needQty": "500000",
+          "coefficient": 1.1
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "name": "Green algae (prasinophyte-like)",
+      "sciName": "Prasinophyte-like green algae",
+      "reproduction": 0.07,
+      "eat": 0.01,
+      "product": 0.03,
+      "dead": 0.02,
+      "element": 1,
+      "era": 6,
+      "groupSpecie": 13
+    },
+    {
+      "id": 31,
+      "name": "Ciliate-like protists",
+      "sciName": "Ciliate-like protists",
+      "reproduction": 0.06,
+      "eat": 0.02,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 1,
+      "era": 6,
+      "groupSpecie": 12
+    },
+    {
+      "id": 32,
+      "name": "Amoeboid protists",
+      "sciName": "Amoeboid protists",
+      "reproduction": 0.05,
+      "eat": 0.02,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 1,
+      "era": 6,
+      "groupSpecie": 12
+    },
+    {
+      "id": 33,
+      "name": "Proterocladus antiquus",
+      "sciName": "Proterocladus antiquus",
+      "reproduction": 0.05,
+      "eat": 0.01,
+      "product": 0.03,
+      "dead": 0.02,
+      "element": 1,
+      "era": 6,
+      "groupSpecie": 13
+    },
+    {
+      "id": 34,
+      "name": "Porifera (sponge-grade)",
+      "sciName": "Porifera (sponge-grade)",
+      "reproduction": 0.03,
+      "eat": 0.02,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 6,
+      "era": 7,
+      "groupSpecie": 16
+    },
+    {
+      "id": 35,
+      "name": "Medusoid/Cnidarian-grade",
+      "sciName": "Medusoid/Cnidarian-grade",
+      "reproduction": 0.03,
+      "eat": 0.02,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 6,
+      "era": 7,
+      "groupSpecie": 17
+    },
+    {
+      "id": 36,
+      "name": "Dickinsonia",
+      "sciName": "Dickinsonia",
+      "reproduction": 0.02,
+      "eat": 0.03,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 6,
+      "era": 7,
+      "groupSpecie": 18
+    },
+    {
+      "id": 37,
+      "name": "Charnia",
+      "sciName": "Charnia",
+      "reproduction": 0.02,
+      "eat": 0.0,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 6,
+      "era": 7,
+      "groupSpecie": 19
+    },
+    {
+      "id": 38,
+      "name": "Cloudina",
+      "sciName": "Cloudina",
+      "reproduction": 0.02,
+      "eat": 0.01,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 6,
+      "era": 7,
+      "groupSpecie": 20
+    },
+    {
+      "id": 39,
+      "name": "Namacalathus",
+      "sciName": "Namacalathus",
+      "reproduction": 0.02,
+      "eat": 0.01,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 6,
+      "era": 7,
+      "groupSpecie": 20
+    },
+    {
+      "id": 40,
+      "name": "Kimberella",
+      "sciName": "Kimberella",
+      "reproduction": 0.02,
+      "eat": 0.02,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 6,
+      "era": 7,
+      "groupSpecie": 28
+    },
+    {
+      "id": 41,
+      "name": "Spriggina",
+      "sciName": "Spriggina",
+      "reproduction": 0.02,
+      "eat": 0.02,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 6,
+      "era": 7,
+      "groupSpecie": 28
+    },
+    {
+      "id": 42,
+      "name": "Ernietta",
+      "sciName": "Ernietta",
+      "reproduction": 0.02,
+      "eat": 0.02,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 6,
+      "era": 7,
+      "groupSpecie": 29
+    },
+    {
+      "id": 43,
+      "name": "Tribrachidium",
+      "sciName": "Tribrachidium",
+      "reproduction": 0.02,
+      "eat": 0.02,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 6,
+      "era": 7,
+      "groupSpecie": 30
+    },
+    {
+      "id": 44,
+      "name": "Sinotubulites",
+      "sciName": "Sinotubulites",
+      "reproduction": 0.02,
+      "eat": 0.01,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 6,
+      "era": 7,
+      "groupSpecie": 20
+    },
+    {
+      "id": 45,
+      "name": "Rangea",
+      "sciName": "Rangea",
+      "reproduction": 0.02,
+      "eat": 0.0,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 6,
+      "era": 7,
+      "groupSpecie": 31
+    },
+    {
+      "id": 46,
+      "name": "Fractofusus",
+      "sciName": "Fractofusus",
+      "reproduction": 0.02,
+      "eat": 0.0,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 6,
+      "era": 7,
+      "groupSpecie": 31
+    },
+    {
+      "id": 47,
+      "name": "Pteridinium",
+      "sciName": "Pteridinium",
+      "reproduction": 0.02,
+      "eat": 0.0,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 6,
+      "era": 7,
+      "groupSpecie": 31
+    },
+    {
+      "id": 48,
+      "name": "Yorgia",
+      "sciName": "Yorgia",
+      "reproduction": 0.02,
+      "eat": 0.02,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 6,
+      "era": 7,
+      "groupSpecie": 28
+    },
+    {
+      "id": 49,
+      "name": "Parvancorina",
+      "sciName": "Parvancorina",
+      "reproduction": 0.02,
+      "eat": 0.02,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 6,
+      "era": 7,
+      "groupSpecie": 28
+    },
+    {
+      "id": 50,
+      "name": "Aspidella",
+      "sciName": "Aspidella",
+      "reproduction": 0.02,
+      "eat": 0.0,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 6,
+      "era": 7,
+      "groupSpecie": 19
+    },
+    {
+      "id": 51,
+      "name": "Leiosphaeridia",
+      "sciName": "Leiosphaeridia (acritarch)",
+      "reproduction": 0.07,
+      "eat": 0.01,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 1,
+      "era": 5,
+      "groupSpecie": 12
+    },
+    {
+      "id": 52,
+      "name": "Testate amoebae",
+      "sciName": "Testate amoebae (Arcella-like)",
+      "reproduction": 0.04,
+      "eat": 0.02,
+      "product": 0.0,
+      "dead": 0.02,
+      "element": 1,
+      "era": 7,
+      "groupSpecie": 32
+    },
+    {
+      "id": 53,
+      "name": "Ammonia oxidizers",
+      "sciName": "Ammonia oxidizers (Nitrosomonas-like)",
+      "reproduction": 0.06,
+      "eat": 0.01,
+      "product": 0.02,
+      "dead": 0.02,
+      "element": 6,
+      "era": 5,
+      "groupSpecie": 26
+    },
+    {
+      "id": 54,
+      "name": "Denitrifiers",
+      "sciName": "Facultative denitrifiers (Pseudomonas-like)",
+      "reproduction": 0.06,
+      "eat": 0.01,
+      "product": 0.02,
+      "dead": 0.02,
+      "element": 6,
+      "era": 5,
+      "groupSpecie": 27
+    }
+  ],
+  "eraSpecieConditions": [
+    {
+      "era": 5,
+      "specie": 22,
+      "qtyNeeded": 1000000.0
+    },
+    {
+      "era": 5,
+      "specie": 23,
+      "qtyNeeded": 1000000.0
+    },
+    {
+      "era": 5,
+      "specie": 4,
+      "qtyNeeded": 1000000.0
+    },
+    {
+      "era": 6,
+      "specie": 27,
+      "qtyNeeded": 100000.0
+    },
+    {
+      "era": 7,
+      "specie": 29,
+      "qtyNeeded": 200000.0
+    },
+    {
+      "era": 7,
+      "specie": 5,
+      "qtyNeeded": 300000.0
+    },
+    {
+      "era": 7,
+      "specie": 25,
+      "qtyNeeded": 150000.0
+    }
+  ],
+  "rounds": [
+    {
+      "id": 1,
+      "name": "Round balanced_v2",
+      "isActive": true
+    }
+  ],
+  "games": [
+    {
+      "id": 1,
+      "planetName": "Gaia-Prime (balanced_v2)",
+      "element": 1,
+      "era": 1,
+      "round": 1,
+      "ev": 0.0,
+      "score": 0.0
+    }
+  ],
+  "gameHaveSpecies": [
+    {
+      "game": 1,
+      "specie": 1,
+      "qty": "1000"
+    },
+    {
+      "game": 1,
+      "specie": 14,
+      "qty": "2000"
+    },
+    {
+      "game": 1,
+      "specie": 15,
+      "qty": "1200"
+    },
+    {
+      "game": 1,
+      "specie": 16,
+      "qty": "800"
+    },
+    {
+      "game": 1,
+      "specie": 17,
+      "qty": "900"
+    },
+    {
+      "game": 1,
+      "specie": 18,
+      "qty": "600"
+    },
+    {
+      "game": 1,
+      "specie": 19,
+      "qty": "700"
+    },
+    {
+      "game": 1,
+      "specie": 20,
+      "qty": "800"
+    },
+    {
+      "game": 1,
+      "specie": 21,
+      "qty": "500"
+    },
+    {
+      "game": 1,
+      "specie": 22,
+      "qty": "400"
+    },
+    {
+      "game": 1,
+      "specie": 23,
+      "qty": "300"
+    },
+    {
+      "game": 1,
+      "specie": 24,
+      "qty": "500"
+    },
+    {
+      "game": 1,
+      "specie": 2,
+      "qty": "500000000"
+    },
+    {
+      "game": 1,
+      "specie": 3,
+      "qty": "300000000"
+    },
+    {
+      "game": 1,
+      "specie": 4,
+      "qty": "100000"
+    },
+    {
+      "game": 1,
+      "specie": 5,
+      "qty": "100000"
+    },
+    {
+      "game": 1,
+      "specie": 6,
+      "qty": "5000000"
+    },
+    {
+      "game": 1,
+      "specie": 7,
+      "qty": "0"
+    },
+    {
+      "game": 1,
+      "specie": 8,
+      "qty": "10000000"
+    },
+    {
+      "game": 1,
+      "specie": 9,
+      "qty": "3000000"
+    },
+    {
+      "game": 1,
+      "specie": 10,
+      "qty": "1000000"
+    },
+    {
+      "game": 1,
+      "specie": 11,
+      "qty": "500000"
+    },
+    {
+      "game": 1,
+      "specie": 12,
+      "qty": "800000"
+    },
+    {
+      "game": 1,
+      "specie": 13,
+      "qty": "2000000"
+    }
+  ],
+  "eons": [
+    {
+      "id": 1,
+      "name": "Archean",
+      "level": 1,
+      "startGa": 4.0,
+      "endGa": 2.5
+    },
+    {
+      "id": 2,
+      "name": "Proterozoic",
+      "level": 2,
+      "startGa": 2.5,
+      "endGa": 0.541
+    }
+  ]
+}

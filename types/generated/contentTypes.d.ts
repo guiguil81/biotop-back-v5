@@ -373,6 +373,35 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCurrencyCurrency extends Struct.CollectionTypeSchema {
+  collectionName: "currencies";
+  info: {
+    displayName: "Currency";
+    pluralName: "currencies";
+    singularName: "currency";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::currency.currency"
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    symbol: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiElementElement extends Struct.CollectionTypeSchema {
   collectionName: "elements";
   info: {
@@ -506,6 +535,37 @@ export interface ApiEraEra extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiGameHaveCurrencyGameHaveCurrency
+  extends Struct.CollectionTypeSchema {
+  collectionName: "game_have_currencies";
+  info: {
+    displayName: "GameHaveCurrency";
+    pluralName: "game-have-currencies";
+    singularName: "game-have-currency";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    amount: Schema.Attribute.Integer & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    currency: Schema.Attribute.Relation<"oneToOne", "api::currency.currency">;
+    game: Schema.Attribute.Relation<"oneToOne", "api::game.game">;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::game-have-currency.game-have-currency"
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGameHaveSpecieGameHaveSpecie
   extends Struct.CollectionTypeSchema {
   collectionName: "game_have_species";
@@ -556,6 +616,10 @@ export interface ApiGameGame extends Struct.CollectionTypeSchema {
     element: Schema.Attribute.Relation<"oneToOne", "api::element.element">;
     era: Schema.Attribute.Relation<"oneToOne", "api::era.era">;
     ev: Schema.Attribute.BigInteger & Schema.Attribute.DefaultTo<"100">;
+    gameHaveCurrency: Schema.Attribute.Relation<
+      "oneToOne",
+      "api::game-have-currency.game-have-currency"
+    >;
     gameHaveSpecies: Schema.Attribute.Relation<
       "oneToMany",
       "api::game-have-specie.game-have-specie"
@@ -662,6 +726,9 @@ export interface ApiGroupSpecieGroupSpecie extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     publishedAt: Schema.Attribute.DateTime;
+    sciName: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     species: Schema.Attribute.Relation<"oneToMany", "api::specie.specie">;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
@@ -740,6 +807,10 @@ export interface ApiSpecieSpecie extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    bioCategory: Schema.Attribute.Enumeration<
+      ["bacteria", "archaea", "eukarya", "abiotic"]
+    > &
+      Schema.Attribute.Required;
     canBeModified: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
@@ -774,6 +845,9 @@ export interface ApiSpecieSpecie extends Struct.CollectionTypeSchema {
     product: Schema.Attribute.Decimal & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     reproduction: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    sciName: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     speciesMutations: Schema.Attribute.Relation<
       "oneToMany",
       "api::species-mutation.species-mutation"
@@ -1336,10 +1410,12 @@ declare module "@strapi/strapi" {
       "admin::transfer-token": AdminTransferToken;
       "admin::transfer-token-permission": AdminTransferTokenPermission;
       "admin::user": AdminUser;
+      "api::currency.currency": ApiCurrencyCurrency;
       "api::element.element": ApiElementElement;
       "api::eon.eon": ApiEonEon;
       "api::era-specie-condition.era-specie-condition": ApiEraSpecieConditionEraSpecieCondition;
       "api::era.era": ApiEraEra;
+      "api::game-have-currency.game-have-currency": ApiGameHaveCurrencyGameHaveCurrency;
       "api::game-have-specie.game-have-specie": ApiGameHaveSpecieGameHaveSpecie;
       "api::game.game": ApiGameGame;
       "api::group-specie.group-specie": ApiGroupSpecieGroupSpecie;

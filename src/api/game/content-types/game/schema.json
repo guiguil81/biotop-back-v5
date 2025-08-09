@@ -10,6 +10,7 @@
   "options": {
     "draftAndPublish": false
   },
+  "pluginOptions": {},
   "attributes": {
     "planetName": {
       "type": "string",
@@ -27,14 +28,14 @@
     "planetWatter": {
       "type": "integer",
       "default": 100,
-      "max": 100,
-      "min": 0
+      "min": 0,
+      "max": 100
     },
     "planetGround": {
+      "type": "integer",
       "default": 0,
-      "max": 100,
       "min": 0,
-      "type": "integer"
+      "max": 100
     },
     "user": {
       "type": "relation",
@@ -63,6 +64,12 @@
       "relation": "manyToOne",
       "target": "api::round.round",
       "inversedBy": "games"
+    },
+    "gameHaveCurrency": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::game-have-currency.game-have-currency",
+      "inversedBy": "game"
     }
   }
 }

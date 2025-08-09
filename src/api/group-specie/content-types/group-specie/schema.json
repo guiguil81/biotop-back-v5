@@ -10,6 +10,7 @@
   "options": {
     "draftAndPublish": false
   },
+  "pluginOptions": {},
   "attributes": {
     "name": {
       "type": "string",
@@ -81,6 +82,11 @@
       "relation": "oneToMany",
       "target": "api::specie.specie",
       "mappedBy": "groupSpecie"
+    },
+    "sciName": {
+      "type": "string",
+      "required": true,
+      "unique": true
     }
   }
 }
