@@ -552,7 +552,7 @@ export interface ApiGameHaveCurrencyGameHaveCurrency
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
     currency: Schema.Attribute.Relation<"oneToOne", "api::currency.currency">;
-    game: Schema.Attribute.Relation<"oneToOne", "api::game.game">;
+    game: Schema.Attribute.Relation<"manyToOne", "api::game.game">;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       "oneToMany",
@@ -615,8 +615,8 @@ export interface ApiGameGame extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     element: Schema.Attribute.Relation<"oneToOne", "api::element.element">;
     era: Schema.Attribute.Relation<"oneToOne", "api::era.era">;
-    gameHaveCurrency: Schema.Attribute.Relation<
-      "oneToOne",
+    gameHaveCurrencies: Schema.Attribute.Relation<
+      "oneToMany",
       "api::game-have-currency.game-have-currency"
     >;
     gameHaveSpecies: Schema.Attribute.Relation<

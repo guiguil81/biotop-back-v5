@@ -22,9 +22,9 @@
     },
     "game": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::game.game",
-      "mappedBy": "gameHaveCurrency"
+      "inversedBy": "gameHaveCurrencies"
     }
   }
 }

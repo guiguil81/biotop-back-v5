@@ -17,7 +17,19 @@ const gameProcess = async (game: Game) => {
   let speciesObject: Map<string, Record<SpecieEvolution>> = Map();
   const gameElementId = game.element.id;
   // const ev = fixNumber(game.ev);
-  const ev = fixNumber(10);
+  const ev = fixNumber(0);
+  const mq = fixNumber(0);
+
+  console.log("mq", mq);
+
+  /*
+  (game.gameHaveCurrency ?? []).forEach((row) => {
+    const cid = row.currency?.id; // <- on lit l’ID de la currency
+    if (cid === 1) ev = fixNumber(row.amount); // EV
+    if (cid === 2) mq = fixNumber(row.amount); // MQ
+  });
+  */
+
   const evByCycle = fixNumber(game.era.evByCycle);
   const evMax = fixNumber(game.era.evMax);
 

@@ -25,6 +25,10 @@ const getCurrentGames: (
       era: {
         fields: ["id", "level", "evByCycle", "evMax"],
       },
+      gameHaveCurrencies: {
+        fields: ["id", "amount"],
+        populate: { currency: { fields: ["id"] } },
+      },
     },
   });
 

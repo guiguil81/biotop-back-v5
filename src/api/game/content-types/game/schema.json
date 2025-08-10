@@ -61,11 +61,11 @@
       "target": "api::round.round",
       "inversedBy": "games"
     },
-    "gameHaveCurrency": {
+    "gameHaveCurrencies": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::game-have-currency.game-have-currency",
-      "inversedBy": "game"
+      "mappedBy": "game"
     }
   }
 }
